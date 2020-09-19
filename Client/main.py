@@ -7,11 +7,13 @@ if host == "":
     host = "127.0.0.1"
 elif host == "0":
     host = "192.168.1.140"
+elif host == "gatien":
+    host = "gatien-oudoire.ddns.net"
 
 port, host = (6010, host)
 
 try:
-    print("Tentative de connexion sur ->" + host) 
+    print("Tentative de connexion sur -> " + host) 
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.connect((host, port))
     print("La connexion a réussie \n")
@@ -36,5 +38,5 @@ except:
 
 
 finally:
-    print("Merci d'avoir utilisé le programme créé par @GatienOudoire")
+    print("Merci d'avoir utilisé le programme créé par @Gatien-Oudoire")
     socket.close()
