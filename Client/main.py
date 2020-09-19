@@ -1,5 +1,6 @@
 #coding:utf-8
 import socket 
+import time 
 
 host = input("Entrez l'adresse du serveur voulu \n")
 
@@ -12,15 +13,24 @@ elif host == "gatien":
 
 port, host = (6010, host)
 
+decoVoulue = 0
+
 try:
     print("Tentative de connexion sur -> " + host) 
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.connect((host, port))
     print("La connexion a réussie \n")
-    print("Il est conseillé de décliner son identité dans le premier message")
+    print("Il est conseillé de décliner son identité dans le premier message\n")
     while True:
-        data = input("Entrez votre message \n")
+        data = input("Entrez votre message :\n")
+        print(data)
         if data == "sortir":
+            data = "XPTDRTDECO"
+            data = data.encode("utf8")
+            socket.sendall(data)
+            time.sleep(2.5)
+            socket.close()
+            decoVoulue = 1
             break
         if data != "":
             data = data.encode("utf8")
@@ -40,5 +50,6 @@ except:
 
 
 finally:
-    print("Merci d'avoir utilisé le programme créé par @Gatien-Oudoire")
-    socket.close()
+    if decoVoulue != 1:
+        print("Merci d'avoir utilisé le programme créé par @Gatien-Oudoire")
+        socket.close()
