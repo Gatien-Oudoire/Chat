@@ -9,10 +9,11 @@ class ThreadPourCLient(threading.Thread):
         self.conn = conn
     
     def run(self):
-        data = self.conn.recv(1024)
-        data = data.decode("utf8")
-        data = adress[0]+": "+data
-        print(data)
+        while True:
+            data = self.conn.recv(1024)
+            data = data.decode("utf8")
+            data = adress[0]+": "+data
+            print(data)
 
 #------------------------------------------------------------------------------------------------
 host, port = ('', 6010)
