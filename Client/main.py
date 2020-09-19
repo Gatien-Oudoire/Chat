@@ -20,10 +20,12 @@ try:
     print("Il est conseillé de décliner son identité dans le premier message")
     while True:
         data = input("Entrez votre message \n")
+        if data == "sortir":
+            break
         if data != "":
             data = data.encode("utf8")
             socket.sendall(data)
-
+    print("Déconnexion ...")
 
 
 

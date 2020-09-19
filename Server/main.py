@@ -8,6 +8,7 @@ class ThreadPourCLient(threading.Thread):
         self.conn = conn
     
     def run(self):
+        verif = 0
         while True:
             data = self.conn.recv(1024)
             data = data.decode("utf8")
@@ -25,6 +26,6 @@ while True:
     print(adress[0] + " c'est connecté") 
     monThread = ThreadPourCLient(conn)
     monThread.start()
-    
+
 conn.close()
 socket.close()
